@@ -1,0 +1,161 @@
+sitemap default label="Burton Lumber - ALL"
+{
+Group label="Corporate" icon="house"  {
+	Group label="IT Department" icon="house"  {
+		Frame label="Server Room" {
+			Text item=TEMP valuecolor=[TEMP>77="red",>67="green",<=67="blue"] {
+				Frame {
+					Switch item=Weather_Chart_Period label="Server Room" mappings=[ "0"="Hour", "1"="Day", "2"="Week" ]
+					Chart item=Server_Room_Chart period=h refresh=6000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+					Chart item=Server_Room_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+					Chart item=Server_Room_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+				}
+			} 
+				Text item=HUMIDITY
+				Text item=HEATINDEX 
+	}
+				Frame label="Jake Office" {
+					Text item=JAKETEMP valuecolor=[JAKETEMP>80="red",>75="orange",>67="green",<=67="blue"] {				
+						Frame {
+							Switch item=Weather_Chart_Period label="Chart Period" mappings=[0="Hour", 1="Day", 2="Week"]
+							Chart item=Jake_Office period=h refresh=6000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+							Chart item=Jake_Office period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+							Chart item=Jake_Office period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+						}
+					}
+					Text item=JAKEHUMIDITY	
+					Text item=JAKEHEATINDEX 
+				}
+
+			Frame label="MQTT Switches" {
+                                Switch item=MQTT3
+                                Switch item=MQTT4
+                                Switch item=MQTT5
+				Switch item=MQTT6
+				Switch item=MQTT1
+                                Switch item=MQTT2
+                        }
+			Frame label="LEDs" icon="slider"  {
+				Switch item=LED1 				
+				Switch item=LED2 				
+				Switch item=LED3 				
+				Switch item=LED4 				
+			}			
+			Frame label="Relays"  {
+				Switch item=Relay1 				
+				Switch item=Relay2 				
+				Switch item=Relay3 				
+				Switch item=Relay4 				
+			}			
+			Frame label="Rope LEDs (RGBW)"  {
+				Colorpicker item=RopeLED1 				
+				Colorpicker item=RopeLED2 				
+			}			
+		}
+
+		
+				
+Group label="Maintenance Department" icon="house"  {
+	Group label="AC Units" icon="groundfloor"  {
+			Frame label="Northern AC Unit (1)" {
+				Text item=AC1_TEMP1 valuecolor=[AC1_TEMP1>130="red",>110="orange",>90="green",<=90="blue"] {
+					Frame {
+						Switch item=Weather_Chart_Period label="Northern AC Unit (1)" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC1_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC1_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC1_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						} 
+				Text item=AC1_TEMP2 valuecolor=[AC1_TEMP2>130="red",>110="orange",>90="green",<=90="blue"]
+				Text item=East_AC_Air_Temp valuecolor=[East_AC_Air_Temp>110="red",>95="orange",>85="green",<=85="blue"]
+			}
+			Frame label="Central AC Unit (2)" {
+				Text item=AC2_TEMP1 valuecolor=[AC2_TEMP1>130="red",>110="orange",>90="green",<=90="blue"] {
+					Frame {
+						Switch item=Weather_Chart_Period label="Central AC Unit (2)" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC2_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC2_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC2_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						}
+				Text item=AC2_TEMP2 valuecolor=[AC2_TEMP2>130="red",>110="orange",>90="green",<=90="blue"]
+				Text item=East_AC_Air_Temp valuecolor=[East_AC_Air_Temp>110="red",>95="orange",>85="green",<=85="blue"]
+			}
+			Frame label="South AC Unit (3)" {
+				Text item=AC3_TEMP1 valuecolor=[AC3_TEMP1>130="red",>110="orange",>90="green",<=90="blue"] {
+					Frame {
+						Switch item=Weather_Chart_Period label="South AC Unit (3)" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC3_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC3_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC3_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						}
+				Text item=AC3_TEMP2 valuecolor=[AC3_TEMP2>130="red",>110="orange",>90="green",<=90="blue"]
+				Text item=South_AC_Air_Temp valuecolor=[South_AC_Air_Temp>110="red",>95="orange",>85="green",<=85="blue"]
+			}
+			Frame label="Water Spray" {
+				Switch item=AC1solenoid
+				Switch item=AC2solenoid
+				Switch item=AC3solenoid
+				Switch item=EastACrelay3
+				Switch item=EastACrelay4
+				Switch item=SouthACrelay2
+				Text item=AC1_Solenoid_Chart {
+					Frame {
+						Switch item=Weather_Chart_Period label="Chart Period" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC1_Solenoid_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC1_Solenoid_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC1_Solenoid_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						}
+				Text item=AC2_Solenoid_Chart {
+					Frame {
+						Switch item=Weather_Chart_Period label="Chart Period" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC2_Solenoid_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC2_Solenoid_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC2_Solenoid_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						}
+				Text item=AC3_Solenoid_Chartx {
+					Frame {
+						Switch item=Weather_Chart_Period label="Chart Period" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC3_Solenoid_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC3_Solenoid_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC3_Solenoid_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						}
+			}
+		}
+	Group label="Air Handlers" icon="groundfloor"  {
+			Frame label="North Air Handler" {
+				Text item=
+				Text item=
+				Text item=
+			}
+			Frame label="Central Air Handler" {
+				Text item=
+				Text item=
+				Text item=
+			}
+			Frame label="Water Spray" {
+				Switch item=
+				Switch item=
+				Switch item=
+				Switch item=
+			}
+		}			
+	}
+			
+Group label="Cameras" icon="shield"{  
+	Text item=PiCam001 icon="shield"{  
+		Frame {  
+			Video url="http://picam001:8080/stream_simple.html" encoding="mjpeg"
+               }  
+          }    
+     }			
+			
+			Group label="RESET" icon="energy" {
+				Switch item=ALL_RESET
+			}
+}
+	}

@@ -1,0 +1,50 @@
+Switch	LED1	"LED1"	<slider>	{ gpio="pin:5" }
+Switch	LED2	"LED2"	<slider>	{ gpio="pin:6" }
+Switch	LED3	"LED3"	<slider>	{ gpio="pin:13" }
+Switch	LED4	"LED4"	<slider>	{ gpio="pin:19" }
+Color	RopeLED1	"RopeLED1"	<colorwheel>
+Color	RopeLED2	"RopeLED2"	<colorwheel>
+Switch	Relay1	"Relay1"	<slider>	{ gpio="pin:12 activelow:yes" }
+Switch	Relay2	"Relay2"	<slider>	{ gpio="pin:16 activelow:yes" }
+Switch	Relay3	"Relay3"	<slider>	{ gpio="pin:20 activelow:yes" }
+Switch	Relay4	"Relay4"	<slider>	{ gpio="pin:21 activelow:yes" }
+Switch	MQTT1	"MQTT-device1"	<slider>	{ mqtt=">[mosquitto:localnet/openHAB/devices/device1:command:On:default],>[mosquitto:localnet/openHAB/devices/device1:command:Off:default]"}
+Switch	MQTT2	"MQTT-device2"	<slider>	{ mqtt=">[mosquitto:localnet/openHAB/devices/device2:command:ON:default],>[mosquitto:localnet/openHAB/devices/device2:command:OFF:default]"}
+Switch	MQTT3	"MQTT-blue"	<slider>	{ mqtt=">[mosquitto:localnet/openHAB/devices/blue1:command:ON:1],>[mosquitto:localnet/openHAB/devices/blue1:command:OFF:0]"}
+Switch	MQTT4	"MQTT-red"	<slider>	{ mqtt=">[mosquitto:localnet/openHAB/devices/red1:command:ON:1],>[mosquitto:localnet/openHAB/devices/red1:command:OFF:0]"}
+Switch	MQTT5	"MQTT-green"	<slider>	{ mqtt=">[mosquitto:localnet/openHAB/devices/green1:command:ON:1],>[mosquitto:localnet/openHAB/devices/green1:command:OFF:0]"}
+Switch  MQTT6   "MQTT-white"    <slider>        { mqtt=">[mosquitto:localnet/openHAB/devices/white1:command:ON:1],>[mosquitto:localnet/openHAB/devices/white1:command:OFF:0]"}
+Number	TEMP	"Temperature [%.1f F]"	<temperature>	(Server_Room_Chart) 		{ mqtt="<[mosquitto:localnet/device/TEMP:state:default]" }
+Number	HUMIDITY	"Humidity [%.1f %%]"	<temperature>	(Server_Room_Chart) 	{ mqtt="<[mosquitto:localnet/device/HUMIDITY:state:default]" }
+Number	HEATINDEX	"Heat Index [%.1f F]"	<temperature>	(Server_Room_Chart)			{ mqtt="<[mosquitto:localnet/device/HEATINDEX:state:default]" }
+Group	Weather_Chart	(Weather)
+Group	Server_Room_Chart
+Group	Jake_Office
+Number	Weather_Temp_Max	"Todays Maximum [%.1f F]"	<temperature>	(Weather_Chart)	
+Number	Weather_Temp_Min	"Todays Minimum [%.1f F]"	<temperature>	(Weather_Chart)	
+DateTime	Date	"Date [%1$ta %1$tR]"	<calendar>
+Number	JAKETEMP	"Jake's Office Temperature [%.1f F]"	<temperature>	(Jake_Office) 		{ mqtt="<[mosquitto:localnet/device/jake/TEMP:state:default]" }
+Number	JAKEHUMIDITY	"Jake's Office Humidity [%.1f %%]"	<temperature>	(Jake_Office) 	{ mqtt="<[mosquitto:localnet/device/jake/HUMIDITY:state:default]" }
+Number	JAKEHEATINDEX	"Jake's Office Heat Index [%.1f F]"	<temperature>	(Jake_Office)			{ mqtt="<[mosquitto:localnet/device/jake/HUMIDEX:state:default]" }
+Number	AC1_TEMP1	"Local Temperature [%.1f F]"	<temperature>	(AC1_Chart) 		{ mqtt="<[mosquitto:Maintenance/AC1/localtemperature:state:default]" }
+Number	AC1_TEMP2	"Coil Temperature [%.1f F]"	<temperature>	(AC1_Chart) 	{ mqtt="<[mosquitto:Maintenance/AC1/coiltemperature:state:default]" }
+Number	AC2_TEMP1	"Local Temperature [%.1f F]"	<temperature>	(AC2_Chart) 		{ mqtt="<[mosquitto:Maintenance/AC2/localtemperature:state:default]" }
+Number	AC2_TEMP2	"Coil Temperature [%.1f F]"	<temperature>	(AC2_Chart) 	{ mqtt="<[mosquitto:Maintenance/AC2/coiltemperature:state:default]" }
+Number	East_AC_Air_Temp	"Ambient Air Temperature [%.1f F]"	<temperature>	(AC1_Chart,AC2_Chart) 	{ mqtt="<[mosquitto:Maintenance/AC1/ambientairtemperature:state:default]" }
+Switch	AC1solenoid	"North AC Spray"	<slider>	(AC1_Solenoid_Chart)	{ mqtt=">[mosquitto:Maintenance/AC1/solenoid:command:ON:1],>[mosquitto:Maintenance/AC1/solenoid:command:OFF:0]"}
+Switch	AC2solenoid	"Central AC Spray"	<slider>	(AC2_Solenoid_Chart)	{ mqtt=">[mosquitto:Maintenance/AC2/solenoid:command:ON:1],>[mosquitto:Maintenance/AC2/solenoid:command:OFF:0]"}
+Switch	EastACrelay3	"East AC Relay 3"	<slider>	(AC1_Solenoid_Chart)	{ mqtt=">[mosquitto:Maintenance/AC1/relay3:command:ON:1],>[mosquitto:Maintenance/AC1/relay3:command:OFF:0]"}
+Switch	EastACrelay4	"East AC Relay 4"	<slider>	(AC2_Solenoid_Chart)	{ mqtt=">[mosquitto:Maintenance/AC2/relay4:command:ON:1],>[mosquitto:Maintenance/AC2/relay4:command:OFF:0]"}
+Number	AC3_TEMP1	"Local Temperature [%.1f F]"	<temperature>	(AC3_Chart) 		{ mqtt="<[mosquitto:Maintenance/AC3/localtemperature:state:default]" }
+Number	AC3_TEMP2	"Coil Temperature [%.1f F]"	<temperature>	(AC3_Chart) 	{ mqtt="<[mosquitto:Maintenance/AC3/coiltemperature:state:default]" }
+Number	South_AC_Air_Temp	"Ambient Air Temperature [%.1f F]"	<temperature>	(AC3_Chart) 	{ mqtt="<[mosquitto:Maintenance/AC3/ambientairtemperature:state:default]" }
+Switch	AC3solenoid	"South AC Spray"	<slider>	(AC3_Solenoid_Chart)	{ mqtt=">[mosquitto:Maintenance/AC3/solenoid:command:ON:1],>[mosquitto:Maintenance/AC3/solenoid:command:OFF:0]"}
+Switch	SouthACrelay2	"South AC Relay 2"	<slider>	(AC3_Solenoid_Chart)	{ mqtt=">[mosquitto:Maintenance/AC3/relay2:command:ON:1],>[mosquitto:Maintenance/AC3/relay2:command:OFF:0]"}
+Group	AC1_Chart
+Group	AC2_Chart
+Group	AC3_Chart
+Group	AC1_Solenoid_Chart
+Group	AC2_Solenoid_Chart
+Group	AC3_Solenoid_Chart
+Switch	ALL_RESET	"RESET ALL ARDUINO's"	<slider>	(ALLreset)	{ mqtt=">[mosquitto:Maintenance/Arduino/ALL_RESET:command:ON:1],>[mosquitto:Maintenance/Arduino/ALL_RESET:command:OFF:0]"}
+Number Weather_Chart_Period		"Chart Period"

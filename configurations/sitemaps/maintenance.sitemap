@@ -1,0 +1,91 @@
+sitemap default label="Maintenance"
+{
+	Group label="AC Units" icon="groundfloor"  {
+			Frame label="Northern AC Unit (1)" {
+				Text item=AC1_TEMP1 valuecolor=[AC1_TEMP1>130="red",>110="orange",>90="green",<=90="blue"] {
+					Frame {
+						Switch item=Weather_Chart_Period label="Northern AC Unit (1)" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC1_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC1_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC1_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						} 
+				Text item=AC1_TEMP2 valuecolor=[AC1_TEMP2>130="red",>110="orange",>90="green",<=90="blue"]
+				Text item=East_AC_Air_Temp valuecolor=[East_AC_Air_Temp>110="red",>95="orange",>85="green",<=85="blue"]
+			}
+			Frame label="Central AC Unit (2)" {
+				Text item=AC2_TEMP1 valuecolor=[AC2_TEMP1>130="red",>110="orange",>90="green",<=90="blue"] {
+					Frame {
+						Switch item=Weather_Chart_Period label="Central AC Unit (2)" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC2_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC2_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC2_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						}
+				Text item=AC2_TEMP2 valuecolor=[AC2_TEMP2>130="red",>110="orange",>90="green",<=90="blue"]
+				Text item=East_AC_Air_Temp valuecolor=[East_AC_Air_Temp>110="red",>95="orange",>85="green",<=85="blue"]
+			}
+			Frame label="South AC Unit (3)" {
+				Text item=AC3_TEMP1 valuecolor=[AC3_TEMP1>130="red",>110="orange",>90="green",<=90="blue"] {
+					Frame {
+						Switch item=Weather_Chart_Period label="South AC Unit (3)" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC3_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC3_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC3_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						}
+				Text item=AC3_TEMP2 valuecolor=[AC3_TEMP2>130="red",>110="orange",>90="green",<=90="blue"]
+				Text item=South_AC_Air_Temp valuecolor=[South_AC_Air_Temp>110="red",>95="orange",>85="green",<=85="blue"]
+			}
+			Frame label="Water Spray" {
+				Switch item=AC1solenoid
+				Switch item=AC2solenoid
+				Switch item=AC3solenoid
+				Switch item=EastACrelay3
+				Switch item=EastACrelay4
+				Switch item=SouthACrelay2
+				Text item=AC1_Solenoid_Chart {
+					Frame {
+						Switch item=Weather_Chart_Period label="Chart Period" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC1_Solenoid_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC1_Solenoid_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC1_Solenoid_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						}
+				Text item=AC2_Solenoid_Chart {
+					Frame {
+						Switch item=Weather_Chart_Period label="Chart Period" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC2_Solenoid_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC2_Solenoid_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC2_Solenoid_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						}
+				Text item=AC3_Solenoid_Chartx {
+					Frame {
+						Switch item=Weather_Chart_Period label="Chart Period" mappings=[0="Hour", 1="Day", 2="Week"]
+						Chart item=AC3_Solenoid_Chart period=h refresh=30000 visibility=[Weather_Chart_Period==0, Weather_Chart_Period=="Uninitialized"]
+						Chart item=AC3_Solenoid_Chart period=D refresh=30000 visibility=[Weather_Chart_Period==1]
+						Chart item=AC3_Solenoid_Chart period=W refresh=30000 visibility=[Weather_Chart_Period==2]
+							}
+						}
+			}
+		}
+	Group label="Air Handlers" icon="groundfloor"  {
+			Frame label="North Air Handler" {
+				Text item=
+				Text item=
+				Text item=
+			}
+			Frame label="Central Air Handler" {
+				Text item=
+				Text item=
+				Text item=
+			}
+			Frame label="Water Spray" {
+				Switch item=
+				Switch item=
+				Switch item=
+				Switch item=
+			}
+		}			
+	}
